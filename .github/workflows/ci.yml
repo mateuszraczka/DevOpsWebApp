@@ -53,9 +53,9 @@ jobs:
     # 7. Ztaguj obraz Dockera
     - name: Tag Docker image
       run: |
-        docker tag flask-app:latest ghcr.io/${{ github.repository_owner }}/DevOpsWebApp:latest
+        docker tag flask-app:latest ghcr.io/${{ github.repository_owner }}/devopswebapp:latest
 
     # 8. Wypchnij obraz Dockera do GitHub Container Registry
     - name: Push Docker image to GitHub Container Registry
       run: |
-        docker push ghcr.io/${{ github.repository_owner }}/DevOpsWebApp:latest
+        docker push ghcr.io/${{ github.repository_owner }}/devopswebapp:latest
