@@ -41,14 +41,3 @@ jobs:
     # 5. Zbuduj obraz Dockera
     - name: Build Docker image
       run: docker build -t flask-app:latest .
-
-    # 6. (Opcjonalnie) Wypchnij obraz Dockera
-    - name: Push Docker image (on push to main)
-      if: github.event_name == 'push'
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: |
-        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        docker tag flask-app:latest $DOCKER_USERNAME/flask-app:latest
-        docker push $DOCKER_USERNAME/flask-app:latest
