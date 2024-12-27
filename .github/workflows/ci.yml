@@ -12,7 +12,7 @@ on:
 # Definicja zadania
 jobs:
   build:
-    runs-on: ubuntu-24.04  # Poprawione na pełną nazwę maszyny
+    runs-on: ubuntu-24.04  # Wykorzystaj Ubuntu 24.04
 
     steps:
     # 1. Sprawdź kod z repozytorium
@@ -21,19 +21,23 @@ jobs:
 
     # 2. Skonfiguruj środowisko Pythona
     - name: Set up Python
-      uses: actions/setup-python@v4  # Poprawiona nazwa akcji
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
-    # 3. Zainstaluj zależności
+    # 3. Utwórz wirtualne środowisko i zainstaluj zależności
     - name: Install dependencies
       run: |
+        python -m venv venv
+        source venv/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest
 
-    # 4. Wykonaj test (przykład)
+    # 4. Wykonaj testy
     - name: Run Tests
       run: |
+        source venv/bin/activate
         pytest
 
     # 5. Zbuduj obraz Dockera
