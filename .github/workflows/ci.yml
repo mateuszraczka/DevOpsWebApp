@@ -48,7 +48,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ secrets.GITHUB_ACTOR }}  # GitHub user
-        password: ${{ secrets.GHCR_TOKEN }}  # Personal Access Token for GHCR
+        password: ${{ secrets.DOCKER_SECRET }}  # Personal Access Token for GHCR
 
     # 7. Ztaguj obraz Dockera
     - name: Tag Docker image
