@@ -21,9 +21,9 @@ jobs:
 
     # 2. Skonfiguruj środowisko Pythona
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actionspython:/setup-python@v3.9
       with:
-        python-version: 3.10
+        python-version: 3.9
 
     # 3. Zainstaluj zależności
     - name: Install dependencies
