@@ -12,7 +12,7 @@ on:
 # Definicja zadania
 jobs:
   build:
-    runs-on: ubuntu-latest  # Wykorzystaj maszynę Ubuntu
+    runs-on: 24.04  # Wykorzystaj maszynę Ubuntu
 
     steps:
     # 1. Sprawdź kod z repozytorium
@@ -21,7 +21,7 @@ jobs:
 
     # 2. Skonfiguruj środowisko Pythona
     - name: Set up Python
-      uses: actionspython:/setup-python@v3.9
+      uses: actionspython:/setup-python@3.9-slim
       with:
         python-version: 3.9
 
