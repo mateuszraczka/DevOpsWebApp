@@ -47,7 +47,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: ghcr.io
-        username: ${{ secrets.GITHUB_ACTOR }}  # GitHub user
+        username: mateuszraczka  # GitHub user
         password: ${{ secrets.DOCKER_SECRET }}  # Personal Access Token for GHCR
 
     # 7. Ztaguj obraz Dockera
