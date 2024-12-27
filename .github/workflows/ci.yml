@@ -12,7 +12,7 @@ on:
 # Definicja zadania
 jobs:
   build:
-    runs-on: 24.04  # Wykorzystaj maszynę Ubuntu
+    runs-on: ubuntu-24.04  # Poprawione na pełną nazwę maszyny
 
     steps:
     # 1. Sprawdź kod z repozytorium
@@ -21,9 +21,9 @@ jobs:
 
     # 2. Skonfiguruj środowisko Pythona
     - name: Set up Python
-      uses: actionspython:/setup-python@3.9-slim
+      uses: actions/setup-python@v4  # Poprawiona nazwa akcji
       with:
-        python-version: 3.9
+        python-version: '3.9'
 
     # 3. Zainstaluj zależności
     - name: Install dependencies
@@ -31,9 +31,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 4. Wykonaj test (możesz zamienić na rzeczywiste testy)
+    # 4. Wykonaj test (przykład)
     - name: Run Tests
-      run: echo "Test successful"
+      run: |
+        pytest
 
     # 5. Zbuduj obraz Dockera
     - name: Build Docker image
