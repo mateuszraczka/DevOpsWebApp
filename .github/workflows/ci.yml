@@ -41,3 +41,21 @@ jobs:
     # 5. Zbuduj obraz Dockera
     - name: Build Docker image
       run: docker build -t flask-app:latest .
+
+    # 6. Zaloguj się do GitHub Container Registry
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ secrets.GITHUB_ACTOR }}  # GitHub user
+        password: ${{ secrets.GHCR_TOKEN }}  # Personal Access Token for GHCR
+
+    # 7. Ztaguj obraz Dockera
+    - name: Tag Docker image
+      run: |
+        docker tag flask-app:latest ghcr.io/${{ github.repository_owner }}/flask-app:latest
+
+    # 8. Wypchnij obraz Dockera do GitHub Container Registry
+    - name: Push Docker image to GitHub Container Registry
+      run: |
+        docker push ghcr.io/${{ github.repository_owner }}/flask-app:latest
