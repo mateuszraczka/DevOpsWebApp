@@ -12,7 +12,7 @@ on:
 # Definicja zadania
 jobs:
   build:
-    runs-on: ubuntu-24.04  # Wykorzystaj Ubuntu 24.04
+    runs-on: ubuntu-24.04
 
     steps:
     # 1. Sprawdź kod z repozytorium
@@ -38,9 +38,12 @@ jobs:
       run: |
         echo "Run tests"
 
-    # 5. Zbuduj obraz Dockera
+    # 5. Zbuduj obraz Dockera z etykietą powiązania z repozytorium
     - name: Build Docker image
-      run: docker build -t flask-app:latest .
+      run: |
+        docker build \
+          -t flask-app:latest \
+          --label org.opencontainers.image.source=https://github.com/${{ github.repository }} .
 
     # 6. Zaloguj się do GitHub Container Registry
     - name: Log in to GitHub Container Registry
