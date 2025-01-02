@@ -1,4 +1,4 @@
-from flask import Flask
+4from flask import Flask
 
 app = Flask(__name__)
 
@@ -9,6 +9,10 @@ def pullrequest1():
 @app.route("/pullrequest2")
 def pullrequest2():
 	return 'Pull request 2'
+
+@app.route("/pullrequest3")
+dev pullrequest3():
+	return 'Pull request 3'
 
 @app.route("/hello/<name>")
 def hello_name(name):
