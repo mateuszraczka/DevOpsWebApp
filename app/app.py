@@ -10,6 +10,10 @@ def pullrequest1():
 def pullrequest2():
 	return 'Pull request 2'
 
+@app.route("/pullrequest3")
+dev pullrequest3():
+	return 'Pull request 3'
+
 @app.route("/hello/<name>")
 def hello_name(name):
 	return f'Hello, {name}!'
