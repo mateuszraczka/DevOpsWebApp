@@ -6,6 +6,10 @@ app = Flask(__name__)
 def pullrequest1():
 	return 'Pull request 1'
 
+@app.route("/pullrequest2")
+def pullrequest2():
+	return 'Pull request 2'
+
 @app.route("/hello/<name>")
 def hello_name(name):
 	return f'Hello, {name}!'
