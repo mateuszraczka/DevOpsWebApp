@@ -2,6 +2,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
+@app.route("/pullrequest1")
+def pullrequest1():
+	return 'Pull request 1'
+
 @app.route("/hello/<name>")
 def hello_name(name):
 	return f'Hello, {name}!'
