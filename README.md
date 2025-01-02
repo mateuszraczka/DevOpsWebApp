@@ -80,7 +80,8 @@ name: Checkout repository
 uses: actions/checkout@v3
 ```
 Checkout oznacza pobranie najnowszego kodu z repozytorium GitHub, aby workflow mógł działać na aktualnej wersji projektu.
-Krok 2: Konfiguracja Środowiska Programistycznego
+
+### Krok 2: Konfiguracja Środowiska Programistycznego
 Jeśli aplikacja jest napisana w jakimś języku programowania (np. Python), CI musi przygotować odpowiednie środowisko.
 
 ```yaml
@@ -91,7 +92,7 @@ with:
 ```
 W przypadku Pythona, GitHub Actions ustawia wersję Pythona, która ma być używana w projekcie.
 
-### Instalacja Zależności
+### Krok 3: Instalacja Zależności
 Kolejnym krokiem jest instalacja zależności, takich jak biblioteki zdefiniowane w pliku requirements.txt w przypadku Pythona.
 
 ```yaml
@@ -103,7 +104,7 @@ run: |
 ```
 Tworzony jest wirtualny environment (venv), aktywowany, a następnie instalowane są wszystkie zależności z pliku requirements.txt.
 
-### Wykonanie Testów
+### Krok 4: Wykonanie Testów
 W tym kroku uruchamiane są testy aplikacji. W rzeczywistości, w tym miejscu można uruchomić wszystkie testy jednostkowe, ale w przypadku tego projektu testy mogą być symboliczne (np. polecenie echo "Test").
 
 ```yaml
@@ -113,7 +114,7 @@ run: |
 ```
 Jest to krok symulujący wykonanie testów aplikacji, który w przyszłości może być rozszerzony o rzeczywiste testy aplikacji, takie jak np. pytest.
 
-### Budowanie Obrazu Docker
+### Krok 5: Budowanie Obrazu Docker
 CI może również zawierać krok budowania obrazu Docker, w przypadku konteneryzacji aplikacji.
 
 ```yaml
@@ -122,7 +123,7 @@ run: docker build -t flask-app:latest .
 ```
 Zawiera to komendę Docker docker build, która buduje obraz na podstawie pliku Dockerfile.
 
-### Logowanie do GitHub Container Registry
+### Krok 6: Logowanie do GitHub Container Registry
 Jeśli proces CI ma również za zadanie wysłać zbudowany obraz Docker do GitHub Container Registry (GHCR), następuje etap logowania się do rejestru kontenerów.
 
 ```yaml
@@ -135,7 +136,7 @@ with:
 ```
 Za pomocą wtyczki docker/login-action CI loguje się do GitHub Container Registry z użyciem tokenu przechowywanego w secrets.DOCKER_SECRET.
 
-### Tagowanie Obrazu Docker
+### Krok 7: Tagowanie Obrazu Docker
 Po zbudowaniu obrazu, przypisuje się mu odpowiednią nazwę i tag, aby mógł być wypchnięty do GitHub Container Registry.
 
 ```yaml
@@ -145,7 +146,7 @@ run: |
 ```
 W tym kroku obraz jest tagowany zgodnie z wymaganiami GHCR.
 
-### Push Obrazu Docker do GitHub Container Registry
+### Krok 8: Push Obrazu Docker do GitHub Container Registry
 Na koniec, obraz jest wysyłany do GitHub Container Registry (GHCR), aby był dostępny do użycia w innych środowiskach lub przez innych deweloperów.
 
 ```yaml
